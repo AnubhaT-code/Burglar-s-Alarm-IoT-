@@ -1,0 +1,31 @@
+int sensorState = 0;
+void setup()
+{
+  // Input Pin for PIR Sensor
+  pinMode(2, INPUT);
+  // Output Pin for LED
+  pinMode(13, OUTPUT);
+  // Output Pin for Buzzer
+  pinMode(8, OUTPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  sensorState = digitalRead(2);
+  // If motion is detected, LED should light up and buzzer should ring
+  if (sensorState == HIGH) 
+  {
+    digitalWrite(13, HIGH);
+    digitalWrite(8, HIGH);
+    Serial.println("Sensor activated!");
+  } 
+  // If motion is not detected, nothing should happen.
+  else 
+  {
+    digitalWrite(13, LOW);
+    digitalWrite(8, LOW);
+    Serial.println("Sensor inactivated!");
+  }
+  // delay of 10 ms
+  delay(10);
+}
